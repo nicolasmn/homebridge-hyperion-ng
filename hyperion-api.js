@@ -141,8 +141,15 @@ class HyperionApi {
         (component) => component.name === "V4L"
       );
 
+      const v4lPriority = data.info.priorities.find(
+        (component) => component.componentId === "V4L"
+      );
+
       this.ambiState =
-        !this.ledState && !this.effectState && v4lComponent.enabled;
+        !this.ledState &&
+        !this.effectState &&
+        v4lComponent.enabled &&
+        v4lPriority.active;
     }
   }
 
